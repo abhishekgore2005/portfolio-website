@@ -5,20 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abhishek Gore | Portfolio</title>
     
-    <!-- Primary Meta Tags -->
     <meta name="title" content="Abhishek Gore | Data Science Portfolio">
-    <meta name="description" content="Portfolio of Abhishek Gore, a BCA student and Data Science Specialist bridging the gap between raw data and actionable insights through Python, Power BI, and SQL.">
+    <meta name="description" content="Portfolio of Abhishek Gore, a BCA graduate and Data Science Specialist bridging the gap between raw data and actionable insights through Python, Power BI, and SQL.">
     <meta name="keywords" content="Abhishek Gore, Data Science, Python, Power BI, SQL, Streamlit, Machine Learning, Data Analytics, Portfolio">
     <meta name="author" content="Abhishek Gore">
 
-    <!-- Open Graph / Facebook / LinkedIn -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://abhishekgore.netlify.app/">
     <meta property="og:title" content="Abhishek Gore | Data Science Portfolio">
     <meta property="og:description" content="Bridging the gap between raw data and actionable insights. Explore my featured projects in AI, Python, and Data Analytics.">
     <meta property="og:image" content="https://i.postimg.cc/fbBz8rYz/Screenshot-2026-05-31-102837.png"> 
 
-    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://abhishekgore.netlify.app/">
     <meta property="twitter:title" content="Abhishek Gore | Data Science Portfolio">
@@ -263,6 +260,7 @@
             transform: perspective(1000px);
             transition: border-color 0.3s;
             position: relative;
+            margin-bottom: 40px; /* Space between multiple cards */
         }
 
         .project-card:hover {
@@ -344,7 +342,7 @@
         footer {
             width: 100%;
             max-width: 1100px;
-            margin-top: 60px;
+            margin-top: 20px;
             padding: 40px;
             text-align: center;
             border-radius: 20px 20px 0 0;
@@ -399,18 +397,15 @@
 </head>
 <body>
 
-    <!-- Ambient Background -->
     <div class="bg-grid"></div>
     <div class="bloom-orb orb-1"></div>
     <div class="bloom-orb orb-2"></div>
 
-    <!-- Custom Cursor -->
     <div class="cursor-dot" id="cursor-dot"></div>
     <div class="cursor-outline" id="cursor-outline"></div>
 
     <div class="container">
         
-        <!-- Hero Section -->
         <header class="hero">
             <div class="bg-text">INTELLIGENCE</div>
             <h1>Abhishek Gore</h1>
@@ -422,10 +417,8 @@
         </header>
     </div>
 
-    <!-- Full Width Marquee Section -->
     <div class="marquee-wrapper">
         <div class="marquee-content">
-            <!-- Repeated elements for infinite scroll illusion -->
             <span>Python</span><span>•</span>
             <span>Power BI</span><span>•</span>
             <span>SQL</span><span>•</span>
@@ -442,12 +435,10 @@
     </div>
 
     <div class="container" style="padding-top: 40px;">
-        <!-- Projects Section -->
         <main>
             <h2 class="section-title">Featured Work</h2>
             
-            <!-- Upgraded 2-Column 3D Project Card -->
-            <a href="https://final-year-project-wwcd.streamlit.app/" target="_blank" rel="noopener noreferrer" class="glass-panel project-card" id="tilt-card">
+            <a href="https://final-year-project-wwcd.streamlit.app/" target="_blank" rel="noopener noreferrer" class="glass-panel project-card tilt-card">
                 
                 <div class="project-info">
                     <h3 class="project-title">AI Resume Intelligence Suite</h3>
@@ -461,15 +452,33 @@
                     </div>
                 </div>
 
-                <!-- App Mockup -->
                 <div class="project-visual">
                     <img src="https://i.postimg.cc/fbBz8rYz/Screenshot-2026-05-31-102837.png" alt="AI Resume Intelligence Suite Screenshot" class="app-img">
                 </div>
 
             </a>
+
+            <a href="https://atscore-checker.vercel.app/" target="_blank" rel="noopener noreferrer" class="glass-panel project-card tilt-card">
+                
+                <div class="project-info">
+                    <h3 class="project-title">ATS Score Checker & Match Optimizer</h3>
+                    <p class="project-desc">
+                        An instant resume scanning web application that evaluates Applicant Tracking System (ATS) compatibility. It analyzes resumes against job descriptions to provide actionable optimization insights.
+                    </p>
+                    <div class="tech-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">AI/NLP</span>
+                        <span class="tag">Vercel</span>
+                    </div>
+                </div>
+
+                <div class="project-visual">
+                    <img src="https://i.postimg.cc/L6N3MzDq/ats-score-pharmacovigilance-officer.png" alt="ATS Score Checker Screenshot" class="app-img">
+                </div>
+
+            </a>
         </main>
 
-        <!-- Glass Footer -->
         <footer class="glass-panel">
             <div class="footer-content">
                 <h3>Let's Build Something</h3>
@@ -501,33 +510,35 @@
             }, { duration: 500, fill: "forwards" });
         });
 
-        // Interactive 3D Tilt Logic for Project Card
-        const card = document.getElementById('tilt-card');
+        // Interactive 3D Tilt Logic for Multiple Project Cards
+        const cards = document.querySelectorAll('.tilt-card');
 
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left; 
-            const y = e.clientY - rect.top;  
-            
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            
-            const rotateX = ((y - centerY) / centerY) * -8; 
-            const rotateY = ((x - centerX) / centerX) * 8;
-            
-            card.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-            
-            cursorOutline.style.width = '60px';
-            cursorOutline.style.height = '60px';
-            cursorOutline.style.backgroundColor = 'rgba(255,255,255,0.05)';
-        });
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left; 
+                const y = e.clientY - rect.top;  
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = ((y - centerY) / centerY) * -8; 
+                const rotateY = ((x - centerX) / centerX) * 8;
+                
+                card.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                
+                cursorOutline.style.width = '60px';
+                cursorOutline.style.height = '60px';
+                cursorOutline.style.backgroundColor = 'rgba(255,255,255,0.05)';
+            });
 
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = `perspective(1200px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
-            
-            cursorOutline.style.width = '40px';
-            cursorOutline.style.height = '40px';
-            cursorOutline.style.backgroundColor = 'transparent';
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1200px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                
+                cursorOutline.style.width = '40px';
+                cursorOutline.style.height = '40px';
+                cursorOutline.style.backgroundColor = 'transparent';
+            });
         });
     </script>
 </body>
